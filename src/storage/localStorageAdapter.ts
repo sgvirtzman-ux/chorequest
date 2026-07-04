@@ -4,10 +4,20 @@ export const STATE_KEY = 'chorequest:state'
 
 export const localStorageAdapter: StorageAdapter = {
   async load() {
-    return localStorage.getItem(STATE_KEY)
+    // sandboxed embeds (e.g. hosted demos) may block storage entirely —
+    // fall back to a fresh in-memory game rather than failing to boot
+    try {
+      return localStorage.getItem(STATE_KEY)
+    } catch {
+      return null
+    }
   },
   async save(serialized: string) {
-    localStorage.setItem(STATE_KEY, serialized)
+    try {
+      localStorage.setItem(STATE_KEY, serialized)
+    } catch {
+      // storage unavailable or full — play on without persistence
+    }
   },
 }
 
