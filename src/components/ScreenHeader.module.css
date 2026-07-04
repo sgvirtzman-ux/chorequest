@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--px) * 3);
+  flex-wrap: wrap;
+  padding: calc(var(--px) * 2) 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--px) * 3);
+  min-width: 0;
+}
+
+.title {
+  color: var(--pink);
+  font-size: clamp(0.8rem, 3vw, 1.05rem);
+  text-transform: uppercase;
+}
+
+.playerName {
+  color: var(--white);
+  font-size: clamp(0.75rem, 3vw, 0.95rem);
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--px) * 3);
+}
