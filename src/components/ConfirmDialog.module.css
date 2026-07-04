@@ -1,0 +1,13 @@
+.message {
+  color: var(--white);
+  font-size: 0.75rem;
+  line-height: 1.9;
+  margin-bottom: calc(var(--px) * 4);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: calc(var(--px) * 2);
+  flex-wrap: wrap;
+}

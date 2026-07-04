@@ -1,0 +1,40 @@
+.panel {
+  --edge: var(--teal-deep);
+  position: relative;
+  background: var(--panel);
+  padding: calc(var(--px) * 4);
+  box-shadow:
+    calc(var(--px) * -1) 0 0 0 var(--edge),
+    calc(var(--px) * 1) 0 0 0 var(--edge),
+    0 calc(var(--px) * -1) 0 0 var(--edge),
+    0 calc(var(--px) * 1) 0 0 var(--edge),
+    calc(var(--px) * -2) 0 0 0 var(--bg-deep),
+    calc(var(--px) * 2) 0 0 0 var(--bg-deep),
+    0 calc(var(--px) * -2) 0 0 var(--bg-deep),
+    0 calc(var(--px) * 2) 0 0 var(--bg-deep);
+  margin: calc(var(--px) * 2);
+}
+
+.pink {
+  --edge: var(--pink-deep);
+}
+
+.gold {
+  --edge: #c98f1b;
+}
+
+.dim {
+  --edge: var(--panel-2);
+}
+
+.title {
+  color: var(--teal);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: calc(var(--px) * 3);
+}
+
+.pink .title {
+  color: var(--pink);
+}
