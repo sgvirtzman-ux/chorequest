@@ -1,0 +1,55 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 0, 14, 0.82);
+  display: grid;
+  place-items: center;
+  padding: calc(var(--px) * 4);
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.dialog {
+  width: min(92vw, 520px);
+  max-height: calc(100dvh - var(--px) * 16);
+  overflow-y: auto;
+  animation: pop 0.16s steps(3);
+}
+
+.wide {
+  width: min(94vw, 720px);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.85);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--px) * 3);
+  margin-bottom: calc(var(--px) * 4);
+}
+
+.title {
+  color: var(--pink);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.close {
+  color: var(--muted);
+  font-size: 0.9rem;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.close:hover {
+  color: var(--danger);
+}

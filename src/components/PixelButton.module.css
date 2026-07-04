@@ -1,0 +1,83 @@
+.btn {
+  --edge: var(--pink-deep);
+  --face: var(--pink);
+  --glow: rgba(255, 95, 210, 0.35);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--px) * 2);
+  min-height: 48px;
+  padding: calc(var(--px) * 3) calc(var(--px) * 5);
+  background: var(--face);
+  color: var(--bg-deep);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  text-align: center;
+  /* pixel border: offset blocks in each cardinal direction = notched corners */
+  box-shadow:
+    calc(var(--px) * -1) 0 0 0 var(--edge),
+    calc(var(--px) * 1) 0 0 0 var(--edge),
+    0 calc(var(--px) * -1) 0 0 var(--edge),
+    0 calc(var(--px) * 1) 0 0 var(--edge),
+    0 calc(var(--px) * 2) 0 0 var(--bg-deep);
+  margin: calc(var(--px) * 2);
+  transition: filter 0.1s;
+}
+
+.btn:hover {
+  filter: brightness(1.12) drop-shadow(0 0 calc(var(--px) * 2) var(--glow));
+}
+
+.btn:active {
+  transform: translateY(calc(var(--px) * 1));
+  box-shadow:
+    calc(var(--px) * -1) 0 0 0 var(--edge),
+    calc(var(--px) * 1) 0 0 0 var(--edge),
+    0 calc(var(--px) * -1) 0 0 var(--edge),
+    0 calc(var(--px) * 1) 0 0 var(--edge);
+}
+
+.btn:disabled {
+  filter: grayscale(0.8) brightness(0.6);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.teal {
+  --edge: var(--teal-deep);
+  --face: var(--teal);
+  --glow: rgba(62, 232, 216, 0.35);
+}
+
+.gold {
+  --edge: #c98f1b;
+  --face: var(--gold);
+  --glow: rgba(255, 210, 74, 0.35);
+}
+
+.danger {
+  --edge: #8f1f38;
+  --face: var(--danger);
+  --glow: rgba(255, 79, 109, 0.35);
+}
+
+/* dark button with colored text, for quiet actions */
+.ghost {
+  --edge: var(--teal-dim);
+  --face: var(--panel);
+  --glow: rgba(62, 232, 216, 0.2);
+  color: var(--teal);
+}
+
+.big {
+  font-size: 1rem;
+  padding: calc(var(--px) * 4) calc(var(--px) * 7);
+}
+
+.small {
+  min-height: 40px;
+  font-size: 0.65rem;
+  padding: calc(var(--px) * 2) calc(var(--px) * 3);
+}

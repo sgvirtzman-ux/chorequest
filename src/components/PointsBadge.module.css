@@ -1,0 +1,43 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--px) * 2);
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+.badge img {
+  width: 24px;
+  height: 24px;
+}
+
+.big {
+  font-size: 1.1rem;
+}
+
+.big img {
+  width: 32px;
+  height: 32px;
+}
+
+.small {
+  font-size: 0.7rem;
+}
+
+.small img {
+  width: 18px;
+  height: 18px;
+}
+
+.value {
+  animation: pop 0.25s steps(3);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,52 @@
+.field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 90% 60% at 70% 10%, rgba(122, 43, 181, 0.22), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 15% 85%, rgba(26, 143, 138, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 85% 75%, rgba(194, 47, 160, 0.14), transparent 60%),
+    var(--bg);
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  inset: -256px;
+  background-repeat: repeat;
+  image-rendering: pixelated;
+}
+
+.far {
+  background-size: 256px 256px;
+  animation: drift-far 240s linear infinite;
+  opacity: 0.7;
+}
+
+.near {
+  background-size: 384px 384px;
+  animation:
+    drift-near 150s linear infinite,
+    twinkle 2.4s steps(2) infinite alternate;
+}
+
+@keyframes drift-far {
+  to {
+    transform: translate(256px, 256px);
+  }
+}
+
+@keyframes drift-near {
+  to {
+    transform: translate(-384px, 384px);
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.95;
+  }
+  to {
+    opacity: 0.55;
+  }
+}
