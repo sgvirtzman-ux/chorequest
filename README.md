@@ -4,6 +4,8 @@ A magical multiplayer RPG game to help manage household work and chores for rewa
 
 ChoreQuest is a browser game with a 16-bit, dark-cosmic look — black skies, pink and teal neon, rainbows, unicorns, space elves and space heroes. Each family member is a hero with weekly quests (chores). Completing quests earns points into a personal bank that can be saved up or cashed in for real-world prizes at any time.
 
+**▶ Play online: https://sgvirtzman-ux.github.io/chorequest/** (deployed automatically from `main` — note that game data is saved per browser/device).
+
 ## Quick start
 
 ```bash
