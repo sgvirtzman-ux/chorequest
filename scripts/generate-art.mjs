@@ -69,14 +69,14 @@ for (const [name, { dir, rows, scale = DEFAULT_SCALE }] of Object.entries(collec
   count++
 }
 
-// favicon: the unicorn mascot at 64x64
+// favicon: the unicorn mascot at 64x64 (HD grid is already 64px at 1x)
 const unicornRows = avatars.unicorn.rows
-writeFileSync(join(ROOT, 'public', 'favicon.png'), PNG.sync.write(renderPng(unicornRows, 2)))
+writeFileSync(join(ROOT, 'public', 'favicon.png'), PNG.sync.write(renderPng(unicornRows, 1)))
 
 // contact sheet for eyeballing (gitignored): all sprites side by side at 3x
 {
   const entries = Object.entries(collections)
-  const cell = 70
+  const cell = 140
   const cols = 6
   const rowsCount = Math.ceil(entries.length / cols)
   const sheet = new PNG({ width: cols * cell, height: rowsCount * cell })
@@ -85,7 +85,7 @@ writeFileSync(join(ROOT, 'public', 'favicon.png'), PNG.sync.write(renderPng(unic
   entries.forEach(([, { rows }], idx) => {
     const gw = rows[0].length
     const gh = rows.length
-    const scale = Math.max(1, Math.floor(Math.min(64 / gw, 64 / gh)))
+    const scale = Math.max(1, Math.floor(Math.min(128 / gw, 128 / gh)))
     const img = renderPng(rows, scale)
     const ox = (idx % cols) * cell + Math.floor((cell - gw * scale) / 2)
     const oy = Math.floor(idx / cols) * cell + Math.floor((cell - gh * scale) / 2)

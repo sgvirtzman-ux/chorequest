@@ -78,6 +78,15 @@ export function ring(g, cx, cy, rx, ry, c) {
   }
 }
 
+/** checkerboard dither between two colors — the classic 32-bit shading blend */
+export function dither(g, x, y, w, h, c1, c2) {
+  for (let j = y; j < y + h; j++) {
+    for (let i = x; i < x + w; i++) {
+      px(g, i, j, (i + j) % 2 === 0 ? c1 : c2)
+    }
+  }
+}
+
 /** plus-shaped sparkle */
 export function sparkle(g, x, y, c = 'W', arm = 1) {
   px(g, x, y, c)
