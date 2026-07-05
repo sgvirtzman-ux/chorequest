@@ -46,13 +46,22 @@ function rainbow() {
       px(g, 48 + Math.cos(a) * (rOuter - 3), 50 - Math.sin(a) * (rOuter - 3), darks[i])
     }
   })
-  // fluffy cloud puffs at the feet
-  for (const cx of [7, 89]) {
-    ellipse(g, cx, 47, 6.5, 4, 'w')
-    ellipse(g, cx + (cx < 48 ? 5 : -5), 49, 5.5, 3, 'w')
-    ellipse(g, cx + (cx < 48 ? -3 : 3), 50, 4, 2.4, 'w')
-    px(g, cx - 2, 44, 'W')
-    hline(g, cx - 3, cx + 4, 51, '5')
+  // big fluffy cumulus at each foot, wide enough to tuck in every band
+  for (const cx of [12, 84]) {
+    const s = cx < 48 ? 1 : -1
+    ellipse(g, cx, 45, 11, 5.5, 'w') // main puff
+    ellipse(g, cx - s * 5, 40, 5.5, 4, 'w') // tall top bump
+    ellipse(g, cx + s * 3, 39, 4.5, 3.4, 'w') // second bump
+    ellipse(g, cx + s * 9, 47, 6.5, 4, 'w') // outer lobe
+    ellipse(g, cx - s * 9, 48, 5.5, 3.4, 'w') // inner lobe
+    ellipse(g, cx, 49, 9, 2.4, 'w') // belly
+    // shaded underside + sunny top highlights
+    ellipse(g, cx, 50.6, 8.5, 1.8, '5')
+    px(g, cx + s * 8, 50, '5')
+    px(g, cx - s * 5, 37, 'W')
+    px(g, cx - s * 4, 37, 'W')
+    px(g, cx + s * 3, 36, 'W')
+    px(g, cx - s * 6, 38, '4')
   }
   return outline(g)
 }

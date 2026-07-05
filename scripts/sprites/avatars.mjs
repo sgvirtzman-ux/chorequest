@@ -293,20 +293,19 @@ function rainbowRobot() {
 
 function starMage() {
   const g = makeGrid(64)
-  // tall bent wizard hat
+  // tall wizard hat centered over the face, tip flopping right
   for (let j = 0; j <= 20; j++) {
-    const spread = Math.round(j * 0.85)
-    const bend = Math.round(Math.sin(j / 20) * 6)
-    hline(g, 34 - spread + bend, 35 + Math.round(spread * 0.7) + bend, 3 + j, 'v')
+    const spread = Math.round(j * 0.8)
+    const bend = j < 6 ? 5 - j : 0
+    hline(g, 32 - spread + bend, 32 + spread + bend, 3 + j, 'v')
   }
-  for (let j = 10; j <= 20; j++) {
-    const spread = Math.round(j * 0.85)
-    const bend = Math.round(Math.sin(j / 20) * 6)
-    px(g, 35 + Math.round(spread * 0.7) + bend, 3 + j, 'V')
-    px(g, 34 + Math.round(spread * 0.7) + bend, 3 + j, 'V')
+  for (let j = 8; j <= 20; j++) {
+    const spread = Math.round(j * 0.8)
+    px(g, 32 + spread, 3 + j, 'V')
+    px(g, 31 + spread, 3 + j, 'V')
   }
-  px(g, 36, 2, 'y') // star on the tip
-  sparkle(g, 36, 1, 'y', 1)
+  px(g, 37, 2, 'y') // star on the floppy tip
+  sparkle(g, 37, 1, 'y', 1)
   // brim
   ellipse(g, 32, 25, 17, 4, 'V')
   hline(g, 17, 47, 27, '8')

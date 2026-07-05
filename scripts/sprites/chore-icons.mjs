@@ -18,37 +18,81 @@ const SCALE = 2 // 64x64 grid -> 128x128 png
 
 function trashCans() {
   const g = makeGrid(64)
-  // big can with ridges, highlight and shadow
+  // alley lighting: single source upper-left, deep shadows on the right
+  // big can
   fillRect(g, 8, 24, 21, 32, 's')
-  for (let x = 11; x <= 26; x += 4) vline(g, x, 26, 54, 'S')
+  for (let x = 11; x <= 22; x += 4) vline(g, x, 26, 54, 'S')
+  fillRect(g, 22, 25, 4, 31, 'S') // wide right shadow
+  vline(g, 26, 25, 55, 'N')
   vline(g, 27, 25, 55, 'N')
-  vline(g, 9, 25, 55, 'w')
+  vline(g, 28, 25, 55, 'm') // deepest edge, away from the light
+  dither(g, 20, 27, 3, 27, 's', 'S')
+  dither(g, 25, 27, 2, 27, 'S', 'N')
+  vline(g, 9, 25, 55, 'w') // lit rim
+  vline(g, 10, 26, 44, '4')
+  // lid, shadowed on the right
   fillRect(g, 6, 18, 25, 5, 'S')
   hline(g, 7, 29, 18, 's')
-  hline(g, 7, 29, 19, 'w')
+  hline(g, 7, 24, 19, 'w')
+  fillRect(g, 25, 19, 6, 4, 'N')
   fillRect(g, 14, 14, 9, 4, 'S')
-  hline(g, 15, 21, 14, 'w')
-  // small can, lid ajar
+  hline(g, 15, 20, 14, 'w')
+  px(g, 22, 15, 'N')
+  // trash poking out from under the lid
+  px(g, 12, 23, 'y')
+  px(g, 13, 23, 'Y')
+  px(g, 19, 23, 'w')
+  px(g, 20, 23, 'n')
+  // small can
   fillRect(g, 36, 30, 20, 26, 's')
-  for (let x = 39, i = 0; x <= 53; x += 4, i++) vline(g, x, 32, 54, 'S')
+  for (let x = 39; x <= 47; x += 4) vline(g, x, 32, 54, 'S')
+  fillRect(g, 49, 31, 4, 25, 'S')
+  vline(g, 53, 31, 55, 'N')
   vline(g, 54, 31, 55, 'N')
+  vline(g, 55, 31, 55, 'm')
+  dither(g, 47, 33, 3, 21, 's', 'S')
+  dither(g, 52, 33, 2, 21, 'S', 'N')
   vline(g, 37, 31, 55, 'w')
+  // tilted lid
   for (let j = 0; j < 5; j++) hline(g, 34 + j, 56 - j, 28 - j, 'S')
   hline(g, 38, 55, 24, 'w')
   hline(g, 37, 56, 25, 'S')
-  // stink squiggles
-  for (const [sx, sy] of [[16, 4], [44, 10], [28, 2]]) {
-    for (let t = 0; t < 8; t++) {
-      const x = sx + Math.round(Math.sin(t / 1.6) * 2)
+  fillRect(g, 51, 26, 5, 2, 'N')
+  // cast shadows pooling on the ground
+  hline(g, 10, 33, 57, 'm')
+  hline(g, 13, 30, 58, 'K')
+  hline(g, 38, 59, 57, 'm')
+  hline(g, 41, 57, 58, 'K')
+  // grime: drips, stains, gunk puddle between the cans
+  vline(g, 13, 27, 34, 'G')
+  vline(g, 18, 40, 46, 'G')
+  px(g, 19, 47, '6')
+  vline(g, 47, 33, 40, 'G')
+  vline(g, 43, 46, 51, '6')
+  px(g, 12, 50, '6')
+  px(g, 40, 44, 'G')
+  fillRect(g, 30, 55, 5, 2, '6')
+  px(g, 32, 54, 'g')
+  px(g, 35, 56, 'G')
+  // thicker stink rising everywhere
+  for (const [sx, sy, h] of [[13, 2, 11], [23, 6, 9], [43, 9, 11], [52, 13, 8], [33, 1, 9]]) {
+    for (let t = 0; t < h; t++) {
+      const x = sx + Math.round(Math.sin(t / 1.5) * 2)
       px(g, x, sy + t, t % 3 === 0 ? 'G' : 'g')
     }
   }
-  // grime drips
-  vline(g, 13, 26, 31, 'G')
-  vline(g, 47, 33, 37, 'G')
-  px(g, 22, 55, '6')
-  px(g, 50, 55, '6')
-  return outline(g)
+  outline(g)
+  // flies drawn after outlining so their delicate wings/buzz dots stay crisp
+  for (const [fx, fy] of [[6, 9], [30, 13], [58, 21], [48, 3]]) {
+    px(g, fx, fy, 'k')
+    px(g, fx + 1, fy, 'x')
+    px(g, fx - 1, fy - 1, 'X')
+    px(g, fx + 2, fy - 1, 'X')
+    px(g, fx - 3, fy + 1, 'n')
+    px(g, fx - 2, fy + 3, 'n')
+    px(g, fx + 3, fy + 2, 'n')
+  }
+  return g
 }
 
 function messyBedroom() {
