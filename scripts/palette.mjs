@@ -41,6 +41,18 @@ export const PALETTE = {
   C: [90, 58, 27, 255], // dark brown
   x: [47, 47, 58, 255], // dark gray
   X: [98, 98, 116, 255], // mid gray
+
+  // HD shading ramps (digits): darkest/lightest steps for 32-bit-era shading
+  1: [140, 22, 112, 255], // pink darkest
+  2: [13, 96, 92, 255], // teal darkest
+  3: [148, 99, 22, 255], // bronze (gold darkest)
+  4: [255, 246, 222, 255], // warm cream highlight
+  5: [214, 204, 240, 255], // pale lavender (soft shadow on white)
+  6: [16, 112, 62, 255], // green darkest
+  7: [24, 70, 158, 255], // blue darkest
+  8: [82, 26, 128, 255], // violet darkest
+  9: [152, 26, 52, 255], // red darkest
+  0: [166, 74, 22, 255], // burnt orange darkest
 }
 
 export const RAINBOW = ['r', 'o', 'y', 'g', 'b', 'v']
